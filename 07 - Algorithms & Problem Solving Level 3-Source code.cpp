@@ -1,8 +1,52 @@
 #include <iostream>
-
+#include <cstdlib>
+#include<string>
+#include<iomanip>
 using namespace std;
+
+
+int RandomNumber(int From, int To)
+{
+	int Random = rand() % (To - From + 1) + From;
+	return Random;
+}
+
+void FullMatrixWithRandomNumber(int Matrix[3][3],short Rows,short cols)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			Matrix[i][j] = RandomNumber(1, 100);
+
+		}
+		
+	}
+}
+
+void PrintMatrix(int Matrix[3][3],short Rows,short Cols)
+{
+
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Cols; j++)
+		{
+			cout<<setw(3) <<Matrix[i][j] <<" ";
+
+		}
+		cout << endl;
+	}
+}
+
 int main()
 {
-    cout << "Hello World!\n";
+	srand((unsigned)time(NULL));
+
+	int Matrix[3][3];
+
+	FullMatrixWithRandomNumber(Matrix,3,3);
+	cout << "\n the following is a 3x3 Random matrix " << endl;
+	PrintMatrix(Matrix, 3, 3);
+
 }
 
